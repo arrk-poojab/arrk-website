@@ -1,0 +1,12 @@
+<g:applyLayout name="navigationLayouts"> 
+   <head>
+		<script type="text/javascript">
+		    $(document).ready(function() {
+				highlightTab("#workForUsTab")
+			});
+		</script>
+	</head>
+	<content tag="left-link">	 
+		        <fts:display filePath="/workForUs/accelerateYourCareer" />
+	</content>
+</g:applyLayout>

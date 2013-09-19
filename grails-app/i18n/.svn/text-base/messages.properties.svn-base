@@ -1,0 +1,239 @@
+default.doesnt.match.message=Property [{0}] of class [{1}] with value [{2}] does not match the required pattern [{3}]
+default.invalid.url.message=Property [{0}] of class [{1}] with value [{2}] is not a valid URL
+default.invalid.creditCard.message=Property [{0}] of class [{1}] with value [{2}] is not a valid credit card number
+default.invalid.email.message=Property [{0}] of class [{1}] with value [{2}] is not a valid e-mail address
+default.invalid.range.message=Property [{0}] of class [{1}] with value [{2}] does not fall within the valid range from [{3}] to [{4}]
+default.invalid.size.message=Property [{0}] of class [{1}] with value [{2}] does not fall within the valid size range from [{3}] to [{4}]
+default.invalid.max.message=Property [{0}] of class [{1}] with value [{2}] exceeds maximum value [{3}]
+default.invalid.min.message=Property [{0}] of class [{1}] with value [{2}] is less than minimum value [{3}]
+default.invalid.max.size.message=Property [{0}] of class [{1}] with value [{2}] exceeds the maximum size of [{3}]
+default.invalid.min.size.message=Property [{0}] of class [{1}] with value [{2}] is less than the minimum size of [{3}]
+default.invalid.validator.message=Property [{0}] of class [{1}] with value [{2}] does not pass custom validation
+default.not.inlist.message=Property [{0}] of class [{1}] with value [{2}] is not contained within the list [{3}]
+default.blank.message=Property [{0}] of class [{1}] cannot be blank
+default.not.equal.message=Property [{0}] of class [{1}] with value [{2}] cannot equal [{3}]
+default.null.message=Property [{0}] of class [{1}] cannot be null
+default.not.unique.message=Field [{0}] with value [{2}] must be unique
+user.username.unique=Login Name {2} must be unique.
+default.paginate.prev=Previous
+default.paginate.next=Next
+default.boolean.true=True
+default.boolean.false=False
+default.date.format=yyyy-MM-dd HH:mm:ss z
+default.number.format=0
+
+default.created.message={0} {1} created
+default.updated.message={0} {1} updated
+default.deleted.message={0} {1} deleted
+default.not.deleted.message={0} {1} could not be deleted
+default.not.found.message={0} not found with id {1}
+default.optimistic.locking.failure=Another user has updated this {0} while you were editing
+
+default.home.label=Home
+default.list.label={0} List
+default.add.label=Add {0}
+default.new.label=New {0}
+default.create.label=Create {0}
+default.show.label=Show {0}
+default.edit.label=Edit {0}
+
+default.button.create.label=Create
+default.button.edit.label=Edit
+default.button.update.label=Update
+default.button.delete.label=Delete
+default.button.delete.confirm.message=Are you sure?
+
+default.invalid.email.format= This is not a valid email address.
+name.cannot.be.blank= Name cannot be blank.
+message.cannot.be.blank= Message cannot be blank.
+
+# Data binding errors. Use "typeMismatch.$className.$propertyName to customize (eg typeMismatch.Book.author)
+typeMismatch.java.net.URL=Property {0} must be a valid URL
+typeMismatch.java.net.URI=Property {0} must be a valid URI
+typeMismatch.java.util.Date=Property {0} must be a valid Date
+typeMismatch.java.lang.Double=Property {0} must be a valid number
+typeMismatch.java.lang.Integer=Property {0} must be a valid number
+typeMismatch.java.lang.Long=Property {0} must be a valid number
+typeMismatch.java.lang.Short=Property {0} must be a valid number
+typeMismatch.java.math.BigDecimal=Property {0} must be a valid number
+typeMismatch.java.math.BigInteger=Property {0} must be a valid number
+
+#Header messages
+
+header.arrk=Arrk
+header.login=Login
+header.find.out.more.services=Find out more about our services?
+header.contact.services=UK: +44 (0)161 227 9900
+link.readMore=Read more
+
+#Header messages: for Pages
+
+header.whoWeAre=Who we are
+header.whatWeDo=What we do
+header.howWeDoIt=How we do it
+header.contactUs=Contact us
+header.workWithUs=Work with us
+header.workForUs=Work for us
+
+#Tab names
+
+tab.home=Home
+tab.whoWeAre=Who we are
+tab.whatWeDo=What we do
+tab.howWeDoIt=How we do it
+tab.contactUs=Contact us
+tab.workWithUs=Work with us
+tab.workForUs=Work for us
+
+#channel grid
+
+channel.title.goes.here=Title goes here
+channel.content1=Lorem ipsum dolor sit amet, consectetur
+channel.content2=adipiscing elit. maecenas lacinia
+channel.scientificAndTech=Scientific & Technical Media
+channel.insurance=Insurance
+channel.thirdSector=Third Sector
+channel.casestudies=Case Studies
+
+# Who We Are Page Links name
+
+link.whatWeBelieve=What We Believe In
+link.personalityCulture=Our Culture & Personality
+link.ourJourney=Our Journey
+link.ourPeople=Our People
+link.arrkFoundation=Arrk Foundation
+
+# Contact Us Message Page
+
+contactUs.heading=Contact Us
+contactUs.message=Thank you for your message. We will be in touch shortly.
+
+# Mail Label
+
+mail.name.label=Name:
+mail.enquiry.label=Enquiry:
+mail.email.label=Email Id:
+mail.message.label=Message:
+
+# Admin Menu Tab 
+
+admin.tab.home=Home
+admin.tab.user=User
+admin.tab.createUser=Create User
+admin.tab.userList=User List
+admin.tab.role=Role
+admin.tab.createRole=Create Role
+admin.tab.roleList=Role List
+admin.tab.requestMap=Request Map
+admin.tab.createRequestmap=Create Requestmap
+admin.tab.listRequestmap=Requestmap List
+admin.tab.reports=Reports
+admin.tab.downloadReport=Download Report
+
+#Customer Testimonial Page
+
+customerTestimonial.heading=Our Customers Say
+executiveTeam.heading=Management Team
+
+#Login Page
+
+login.heading=Login
+login.loginId.label=Login ID
+login.password.label=Password
+login.rememberMe.label=Remember me
+
+#Restricted Page Message
+
+login.denied=Login Denied
+pageRestricted.message=Sorry, you're not authorized to view this page.
+
+#Registration Page
+
+registration.heading=User Registration
+registration.loginName.label=Login Name
+registration.email.label=Email
+registration.password.label=Password
+registration.organisation.label=Organisation
+registration.jobTitle.label=Job Title
+registration.phone.label=Phone
+registration.interest.label=Interest
+
+#Create / Edit / List Requestmap Page
+
+requestmap.createRequestmap=Create Request Map
+requestmap.url.label=URL Pattern: 
+requestmap.role.label=Role (comma-delimited):
+requestmap.listRequestmap=Requestmap List
+requestmap.showRequestmap=Show Request Map
+requestmap.show.label=Show
+
+#Create / Edit / List Role Page
+
+role.createRole=Create Role
+role.roleName.label=Role Name:
+role.description.label=Description:
+role.editRole.label=Edit Role
+role.people.label=People:
+role.listRole=Role List
+role.showRole=Show Role
+role.show.label=Show
+
+
+#Admin Create / Edit / List User Page
+
+admin.createUser=Create User
+admin.loginName.label=Login Name:
+admin.email.label=Email:
+admin.password.label=Password:
+admin.organisation.label=Organisation:
+admin.jobTitle.label=Job Title:
+admin.phone.label=Phone:
+admin.interest.label=Interest:
+admin.login.enabled=Enabled:
+admin.assignRoles=Assign Roles:
+admin.editUser.label=Edit User
+admin.roles.label=Roles:
+admin.listUser=User List
+admin.show.label=Show
+admin.edit.label=Edit
+export.into.csv=Export Into CSV
+
+#Contact Us Office Map Page
+
+manchester.office.map=Manchester Office Map
+mumbai.office.map=Mumbai Office Map
+Print.label=Print
+
+#Arrk Website Footer page
+
+footer.copyright=Copyright Arrk Limited
+footer.home=Home
+footer.whoWeAre=Who we are
+footer.whatWeDo=What we do
+footer.howWeDoIt=How we do it
+footer.contactUs=Contact us
+footer.workWithUs=Work with us
+footer.workForUs=Work for us
+footer.whatsGoingOn=What's going on
+footer.privacyPolicy=Privacy Policy
+footer.termsOfUse=Terms of Use
+footer.accessibilityStatement=Accessibility Statement
+footer.siteMap=Site Map
+footer.popularLinks=Popular links
+footer.termsOfUse=Terms of Use
+footer.awardsAndMemberships=Awards and Accreditations
+footer.deloitte=Deloitte
+footer.arrkUk=Arrk UK
+footer.contactArrkUkTel=tel: +44 (0) 161 227 9900
+footer.contactArrkUkFax=fax: +44 (0) 161 227 9966
+footer.arrkIndia=Arrk India
+footer.contactArrkIndiaTel=tel: +91 (0) 22 2778 4200
+footer.contactArrkIndiaFax=fax: +91 (0) 22 2778 4210
+
+
+error.missing.base.filepath=Please specify the staticcontent.filesystem.path in Config.groovy of webapp
+error.missing.filepath=Please specify the filePath whose contents need to be rendered
+error.insufficient.files=Insufficient files to show
+error.illegalArgument=Illegal Argument
+
+

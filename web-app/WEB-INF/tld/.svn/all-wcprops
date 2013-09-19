@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/ArrkWebsite/!svn/ver/3/trunk/arrk-website/web-app/WEB-INF/tld
+END
+grails.tld
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/ArrkWebsite/!svn/ver/3/trunk/arrk-website/web-app/WEB-INF/tld/grails.tld
+END
+c.tld
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/ArrkWebsite/!svn/ver/3/trunk/arrk-website/web-app/WEB-INF/tld/c.tld
+END
+spring.tld
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/ArrkWebsite/!svn/ver/3/trunk/arrk-website/web-app/WEB-INF/tld/spring.tld
+END
+fmt.tld
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/ArrkWebsite/!svn/ver/3/trunk/arrk-website/web-app/WEB-INF/tld/fmt.tld
+END
