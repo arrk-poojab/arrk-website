@@ -20,7 +20,9 @@
         auto: true,
         pager: true,
         nav: true,
-        speed: 700,
+        speed: 500,
+        timeout: 6000,
+        pauseControls: true,
         maxwidth: 800,
         namespace: "centered-btns"
       });
@@ -43,14 +45,18 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#play").css("display","none");
-    $('.slideshow').cycle({
-		fx:     'scrollVert', 
-    	timeout: 5000, 
-    	delay:  -2000,
-		next: '#prev',
-		prev: '#next',
-		rev: 1
-	});
+
+	 var x = $(window).width();
+	   if(x < 480) {
+    			$('.slideshow').cycle({
+			fx:     'scrollVert', 
+    			timeout: 5000, 
+    			delay:  -2000,
+			next: '#prev',
+			prev: '#next',
+			rev: 1
+		});
+	}
 
 	//$("#next").click(function() {
 	  //$('.slideshow').cycle('resume');
@@ -250,6 +256,20 @@ function disp_confirm(e)
 }
 
 
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".btn_case").click(function() {
+		$(".keyArtical").css("display", "none");
+		$(".relatedArtical").css("display", "block");
+	});
+	
+	$(".banner_cancel").click(function() {
+		$(".keyArtical").css("display", "block");
+		$(".relatedArtical").css("display", "none");
+	});
+});
 </script>
 
 

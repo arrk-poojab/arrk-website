@@ -101,7 +101,7 @@ class RegisterController {
 
 		// if user want to change password. leave passwd field blank, passwd will not change.
 		if (params.passwd && params.passwd.length() > 0
-				&& params.repasswd && params.repasswd.length() > 0) {
+		&& params.repasswd && params.repasswd.length() > 0) {
 			if (params.passwd == params.repasswd) {
 				person.passwd = authenticateService.encodePassword(params.passwd)
 			}
@@ -128,9 +128,9 @@ class RegisterController {
 		else {
 			render view: 'edit', model: [person: person]
 		}
-	 }
-	
-	
+	}
+
+
 	def delete = {
 		def person = User.get(params.id)
 		if (person) {
@@ -157,7 +157,7 @@ class RegisterController {
 	 * Person save action.
 	 */
 	def save = {
-		
+
 		// skip if already logged in
 		if (authenticateService.isLoggedIn()) {
 			redirect action: show
@@ -185,73 +185,73 @@ class RegisterController {
 			render view: 'index', model: [person: person]
 			return
 		}
-		
 
-	     def fullName = (params.username).trim().split(' ')
-		 
-		 def firstname = fullName[0]
-					
+
+		def fullName = (params.username).trim().split(' ')
+
+		def firstname = fullName[0]
+
 		if ( firstname.length() > 11){
 			person.username==''
 			flash.message = 'First Name can be maximum 11 characters.'
 			render view: 'index', model: [person: person]
 			return
 		}
-		
 
-		
+
+
 		if ((params.passwd).trim() =='') {
 			flash.message = 'Password cannot be blank'
 			render view: 'index', model: [person: person]
 			return
 		}
-		
-		
 
-		
+
+
+
 		person.email=params.email
 		try{
 			def emailAddresses=params.email
 
 			//assert GenericValidator.isEmail(emailAddresses)
-			   if (!GenericValidator.isEmail(emailAddresses)){
+			if (!GenericValidator.isEmail(emailAddresses)){
 				// call errors.rejectValue(), or return false, or return an error code
 				flash.message = 'Invalid Email.'
-						render view: 'index', model: [person: person]
-						 return
-			   }
-		  
-		 }
+				render view: 'index', model: [person: person]
+				return
+			}
+
+		}
 		catch (Exception e) {
-		   log.error("stack trace", e)
-		   flash.message = 'try error.'
-				 render view: 'index', model: [person: person]
-				 return
-		 }
-		
-		
+			log.error("stack trace", e)
+			flash.message = 'try error.'
+			render view: 'index', model: [person: person]
+			return
+		}
+
+
 		if ((params.organisation).trim() =='') {
 			flash.message = 'Organisation cannot be blank.'
 			render view: 'index', model: [person: person]
 			return
 		}
-		
+
 		if ((params.jobtitle).trim() =='') {
 			flash.message = 'Job Title cannot be blank.'
 			render view: 'index', model: [person: person]
 			return
 		}
-		
 
-		
+
+
 		if ((params.phone).trim() =='') {
 			flash.message = 'Phone cannot be blank.'
 			render view: 'index', model: [person: person]
 			return
 		}
-		
+
 		def phoneNo = (params.phone).trim();
-		
+
 		for (int i = 0; i < phoneNo.length(); i++) {
 			//If we find a non-digit character we return false.
 			if (!Character.isDigit(phoneNo.charAt(i)))
@@ -263,77 +263,90 @@ class RegisterController {
 				}
 			}
 		}
-			
-		
+
+
 		if (params.interest =='') {
 			flash.message = 'Interest cannot be blank.'
 			render view: 'index', model: [person: person]
 			return
 		}
-			
+
 		def passwdWithoutEncode = params.passwd;
-		
+
 		def pass = authenticateService.encodePassword(params.passwd)
 		person.passwd = pass
 		person.enabled = true
-//		person.emailShow = true
-	//	person.description = ''
+		//		person.emailShow = true
+		//	person.description = ''
 		if (person.save()) {
 			role.addToPeople(person)
 			//if (config.security.useMail) {
-				  println('mail to be send')
-				String emailContent = """You have signed up for an account at:
-						 ${request.scheme}://${request.serverName}:${request.serverPort}${request.contextPath}
+			String emailContent1 ="""Hi ${person.username},
 						
-						 Here are the details of your account:
-						 -------------------------------------
+Thank you for registering with Arrk Group. 
+As a registered user, you can download the white paper 
+and case studies posted on our website.
+										 
+UserName: ${person.username}
 
-						 Email: ${person.email}
-						 Full Name: ${person.username}
-						 Password: ${params.passwd}
-						"""
-
-						mailService.sendMail {
-							to person.email
-							from 'donotreply@gmail.com'
-							subject 'New Account'
-							body emailContent.toString()
-						}		
+Regards
+Arrk Group
 						
-//				def email = [
-//					to: [person.email], // 'to' expects a List, NOT a single email address
-//					subject: "[${request.contextPath}] Account Signed Up",
-//					body: emailContent.toString() // 'text' is the email body
-//				]
-//				emailerService.sendEmails([email])
-		//	}
+Contact us - http://www.arrkgroup.com/contactUs
+
+Note: This is a system-generated e-mail, please don't reply to this message as it is not being monitored.			
+"""
+			mailService.sendMail {
+				to person.email
+				from 'donotreply@arrkgroup.com'
+				subject 'Email content for Arrk Website Registration'
+				body emailContent1.toString()
+			}
+
+			String emailContent2 ="""Hi ${person.username},
+						
+Thank you for registering with Arrk Group. 
+As a registered user, you can download the white paper 
+and case studies posted on our website.
+							 
+Password: ${params.passwd}
+
+Regards
+Arrk Group
+						
+Contact us - http://www.arrkgroup.com/contactUs
+	
+Note: This is a system-generated e-mail, please don't reply to this message as it is not being monitored.					
+"""
+			mailService.sendMail {
+				to person.email
+				from 'donotreply@arrkgroup.com'
+				subject 'Email content for Arrk Website Registration'
+				body emailContent2.toString()
+			}
 
 			person.save(flush: true)
 
 			def auth = new AuthToken(person.username, params.passwd)
 			def authtoken = daoAuthenticationProvider.authenticate(auth)
 			SCH.context.authentication = authtoken
-			//if(((!(request.getParameter('goToPath').equals(null))))) //.trim()actionName.equals(null))))
-			
-		//	def returnToUrl=request.getParameter('returnToUrl').trim();	
-			//println('returnToUrl: '+returnToUrl); 
-			
+
 			def returnToUrl=request.getParameter('returnToUrl')
-			if(returnToUrl!="null") 
-			{  
+			if(returnToUrl!="null")
+			{
 				redirect uri:returnToUrl ;
-								
-			 }
+
+			}
 			else
 			{
-				
+
 				redirect uri:'/' ;
-				
-			}			  
-         
-		//	def returnToUrl = request.getParameter('returnToUrl').trim() ?: "/home" 
-			
-			
+
+			}
+
+			//	def returnToUrl = request.getParameter('returnToUrl').trim() ?: "/home"
+
+
 		}
 		else {
 			person.passwd = passwdWithoutEncode

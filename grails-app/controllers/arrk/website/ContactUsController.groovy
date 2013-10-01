@@ -10,10 +10,8 @@ import org.apache.commons.validator.GenericValidator
 class ContactUsController {
 
 	private static final log = LogFactory.getLog(this)
-	// Declare properties
+	
 	def mailService
-
-
 	
 	// Send actions only accept POST requests
 	static allowedMethods = [send:'POST', ajaxSend:'POST']
@@ -39,12 +37,6 @@ class ContactUsController {
 			   render view: 'contactUs', model: [contactUsInstance: contactUsInstance]
 			   return
 		   }
-		   
-//		   if (contactUsInstance.email == '') {
-//			   flash.message = 'This is not a valid email address.'
-//			   render view: 'contactUs', model: [contactUsInstance: contactUsInstance]
-//			   return
-//		   }
 		   try{
 			   def emailId=contactUsInstance.email
    
@@ -78,9 +70,6 @@ class ContactUsController {
 						subject contactUsInstance.enquiry
 						body (view:"mail", model:["Message": contactUsInstance.message,"subject": contactUsInstance.enquiry,"from":contactUsInstance.name,"email": contactUsInstance.email])
 					}
-					println("Contact form message successfully sent")
-
-				//flash.message = "${message(code: 'Message Sucessfuly Send')}"
 				  render(view: "_message")
 
 					

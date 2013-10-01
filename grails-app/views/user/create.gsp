@@ -42,7 +42,7 @@
 												class="value ${hasErrors(bean:person,field:'username','errors')}">
 												<input type="text" id="username" name="username"
 												value="${person.username?.encodeAsHTML()}"
-												placeholder=' Firstname  Surname' />
+												placeholder=' Login Name' />
 											</td>
 										</tr>
 
@@ -62,7 +62,7 @@
 											<td valign="top"
 												class="value ${hasErrors(bean:person,field:'passwd','errors')}">
 												<input type="password" id="passwd" name="passwd"
-												value="${person.passwd?.encodeAsHTML()}" />
+												value="${person.passwd?.encodeAsHTML()}" placeholder='Enter your Password' />
 											</td>
 										</tr>
 

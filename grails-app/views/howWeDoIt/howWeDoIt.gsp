@@ -13,5 +13,4 @@
    	<content tag="right-content">	 
         <fts:display filePath="/howWeDoIt/howWeDoIt" />
     </content>   
-
 </g:applyLayout>

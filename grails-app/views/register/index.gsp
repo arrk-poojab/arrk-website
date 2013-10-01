@@ -42,7 +42,7 @@
 				<b style="color:#FF0000">*</b>
 				</td>
 				<td  class='value${hasErrors(bean:person,field:'username','errors')}'>
-					<input type="text" name='username' id="username" value="${person?.username?.encodeAsHTML()}" placeholder='Firstname   Surname'/>
+					<input type="text" name='username' id="username" value="${person?.username?.encodeAsHTML()}" />
 				</td>
 			</tr>
 
@@ -51,7 +51,7 @@
 				<b style="color:#FF0000">*</b>
 				</td>
 				<td  class='value${hasErrors(bean:person,field:'email','errors')}'>
-					<input type="text" name='email' id="email" title="Email" value="${person?.email?.encodeAsHTML()}" placeholder='Enter your Email Id'/>
+					<input type="text" name='email' id="email" title="Email" value="${person?.email?.encodeAsHTML()}" />
 				</td>
 			</tr>
 			

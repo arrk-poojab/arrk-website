@@ -1,12 +1,13 @@
 
 import org.codehaus.groovy.grails.plugins.springsecurity.RedirectUtils
 import org.grails.plugins.springsecurity.service.AuthenticateService
-
 import org.springframework.security.AuthenticationTrustResolverImpl
 import org.springframework.security.DisabledException
+import org.grails.mail.MailService
 import org.springframework.security.context.SecurityContextHolder as SCH
 import org.springframework.security.ui.AbstractProcessingFilter
 import org.springframework.security.ui.webapp.AuthenticationProcessingFilter
+import arrk.website.filesystem.RandomService
 
 /**
  * Login Controller (Example).
@@ -17,7 +18,8 @@ class LoginController {
 	 * Dependency injection for the authentication service.
 	 */
 	def authenticateService
-
+	def mailService
+	def randomService
 	/**
 	 * Dependency injection for OpenIDConsumer.
 	 */
@@ -46,8 +48,8 @@ class LoginController {
 
 		nocache response
 		def config = authenticateService.securityConfig.security
-		
-		
+
+
 		if (isLoggedIn()) {
 			redirect uri: authenticateService.securityConfig.security.defaultTargetUrl
 			return
@@ -63,7 +65,7 @@ class LoginController {
 			view = 'facebookAuth'
 			postUrl = "${request.contextPath}${config.facebook.filterProcessesUrl}"
 		}
-		else {						
+		else {
 			view = 'auth'
 			postUrl = "${request.contextPath}${config.filterProcessesUrl}"
 			println("posturl-----------------------------------"+postUrl);
@@ -79,10 +81,10 @@ class LoginController {
 	 * Form submit action to start an OpenID authentication.
 	 */
 	def openIdAuthenticate = {
-		
+
 		String openID = params['j_username']
 		try {
-			
+
 			String returnToURL = RedirectUtils.buildRedirectUrl(
 					request, response, openIDAuthenticationProcessingFilter.filterProcessesUrl)
 			String redirectUrl = openIDConsumer.beginConsumption(request, openID, returnToURL)
@@ -96,7 +98,7 @@ class LoginController {
 
 	// Login page (function|json) for Ajax access.
 	def authAjax = {
-	
+
 		nocache(response)
 		//this is example:
 		render """
@@ -111,8 +113,8 @@ class LoginController {
 	/**
 	 * The Ajax success redirect url.
 	 */
-	def ajaxSuccess = {		
-	
+	def ajaxSuccess = {
+
 		nocache(response)
 		render '{success: true}'
 	}
@@ -132,14 +134,12 @@ class LoginController {
 	 */
 	def full = {
 		render view: 'auth', params: params,
-			model: [hasCookie: authenticationTrustResolver.isRememberMe(SCH.context?.authentication)]
+		model: [hasCookie: authenticationTrustResolver.isRememberMe(SCH.context?.authentication)]
 	}
 
 	// Denial page (data|view|json) for Ajax access.
-	def deniedAjax = {
-		//this is example:
-		render "{error: 'access denied'}"
-	}
+	def deniedAjax = { //this is example:
+		render "{error: 'access denied'}" }
 
 	/**
 	 * login failed
@@ -186,6 +186,56 @@ class LoginController {
 		response.setDateHeader('max-age', 0)
 		response.setIntHeader ('Expires', -1) //prevents caching at the proxy server
 		response.addHeader('cache-Control', 'private') //IE5.x only
+	}
+
+	def forgetPassword = {
+		render view: 'forgetPassword', model: [User: User]
+	}
+
+
+
+	def forgotPasswordSendMail = {
+		println("hello")
+		def person
+		def user	
+		if (User.findByUsername(params.username)!= null) {			
+			user = User.findByUsername(params.username)
+			person = User.get(user.id)
+			println "!!!!!!!!!!"+user.email
+			println params.email
+			if (person && (user.email == params.email)) {
+				def password = randomService.generateRandomString(8)
+				person.passwd = authenticateService.encodePassword(password)
+				println("in else password is :"+ user.passwd)
+				String emailContent = """ Hi ${user.username},
+						 
+The password for your Arrkgroup account is : ${password}
+
+Regards
+Arrk Group
+						
+Contact us - http://www.arrkgroup.com/contactUs
+
+Note: This is a system-generated e-mail, please don't reply to this message as it is not being monitored.
+"""
+				mailService.sendMail {
+					to user.email
+					from 'donotreply@arrkgroup.com'
+					subject "Password for ArrkGroup"
+					body emailContent.toString()
+				}
+				person.save()
+				flash.message = message(code:"LoginController.msg.forgot", args:[user.username])
+				render view: 'forgetPassword', model: [User: User]
+
+			}else {
+				flash.message = message(code:"LoginController.msg.forgot.email", args:[params.username])
+				render view: 'forgetPassword', model: [User: User]
+			}
+		} else {
+			flash.message = message(code:"LoginController.msg.forgot.unknown", args:[params.username])
+			render view: 'forgetPassword', model: [User: User]
+		}
 	}
 }
 

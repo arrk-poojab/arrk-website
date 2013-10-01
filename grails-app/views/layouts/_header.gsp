@@ -10,7 +10,9 @@
 </div>
 
  <div class="header">
+  <div class="contact-info-toggle floatRight"><!-- + Show Search and Contact Info --></div>
     <h1 class="logo grid_2"><a href="home" title="Arrk Logo"><img src="images/logo.png" alt="Arrk Logo" /></a></h1>
+   <div class="close-btn"></div>
      <div class="contactInfo-admin grid_4 floatRight">
    	 <div class="padding-bottom-5 overflow-hidden">
    	 <span class="welcomeuser-msg floatLeft padding-left-15">
@@ -32,6 +34,8 @@
 	  </div>
 	 </div>  
       <div class="clear"></div>
+
+   <div class="contact-wrapper">
       <span class="contactLink">
      <a href="contactUs" class="bottomBorder" id="contactUsTab"><g:message code="tab.contactUs"/></a>
      <g:isLoggedIn>
@@ -45,7 +49,8 @@
 	     <span class="contactNumber">
 	     <h2><strong><g:message code="header.find.out.more.services"/></strong></h2>
             <h3>UK: +44 (0)<span style="display:none;">-</span>161<span style="display:none;">-</span> 227 9900</h3>
-	     </span> 
+	     </span>
+    </div>
       </div>
 <div class="clear"></div>    
  <fts:display filePath="/home/header"/>

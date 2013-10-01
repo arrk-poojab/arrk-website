@@ -27,21 +27,6 @@ class DefaultFilesService implements FilesService {
 	* @param nodeRef
 	* @return
 	*/
-//   def getContent(filePath) throws FilesException {
-//	   String basePath = CH.config.staticcontent.filesystem.path
-//	   println filePath
-//	   if (!CH.config.staticcontent.filesystem.path) {
-//		   throw new FilesException(Error.CONFIG_NOT_SPECIFIED)
-//	   }
-//	   if (!filePath) {
-//		   throw new FilesException(Error.FILEPATH_NOT_SPECIFIED)
-//	   }
-//	   String completePath = basePath + filePath
-//	   
-//	   new File(completePath).text
-//   }
-	
-	
 	def getContent(filePath) throws FilesException {
 		String basePath = CH.config.staticcontent.filesystem.path
 		def filename= filePath.split(';')
@@ -67,9 +52,7 @@ class DefaultFilesService implements FilesService {
 	   }
 	 
 	   String completePath = basePath + filename[0]
-	   println('completeURL: '+completePath);
-	  // File file=new File(completePath);
-	//	  boolean exists = file.exists();
+	  
 	   def input = new File(completePath)
 	 
 	   if(input.exists()){
